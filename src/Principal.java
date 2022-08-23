@@ -2,40 +2,56 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+
+import model.Aluno;
+import repository.AlunoRepository;
 
 public class Principal {
 
 	public static void main(String[] args) {
 		
+		Scanner sc = new Scanner(System.in);
+		boolean continua = true;
 		
-		Aluno aluno1 = new Aluno(111, "João da silva");
-		Aluno aluno2 = new Aluno(222, "Maria da silva");
-		Aluno aluno3 = new Aluno(333, "Roberto da silva");
-		Aluno aluno4 = new Aluno(3241, "Ana clara");
-		Aluno aluno5 = new Aluno(112, "Regis Lopes");
+		AlunoRepository repository = new AlunoRepository();
+		do {
+			System.out.println("Digite a matricula do aluno: ");
+			int matricula = sc.nextInt();
+			if(matricula == 0) {
+				break;
+			}
+			
+			sc.nextLine();
+			
+			System.out.println("Digite o nome do aluno: ");
+			String nome = sc.nextLine();
+			
+			Aluno aluno = new Aluno(matricula, nome);
+			
+			repository.salvar(aluno);
+			
+		}while(continua);
 		
-		Map<Integer, Aluno> alunos = new TreeMap<>();
+		System.out.println("Todos alunos cadastrados:");
+		System.out.println(repository.buscarTodos());
 		
+		System.out.println("=========================");
 		
-		alunos.put(aluno1.getMatricula(), aluno1);
-		alunos.put(aluno2.getMatricula(), aluno2);
-		alunos.put(aluno3.getMatricula(), aluno3);
-		alunos.put(aluno4.getMatricula(), aluno4);
-		alunos.put(aluno5.getMatricula(), aluno5);
+		System.out.println("Aluno com matricula 1010");
+		System.out.println(repository.buscarPorMatricula(1010));
 		
-		System.out.println(alunos);
-		System.out.println("==================");
-	
-	
+		System.out.println("=========================");
+		System.out.println("Removendo aluno com matricula 1010");
+		repository.remover(1010);
 		
-		alunos.
-		List<Aluno> listAlunos = alunos.values().stream().collect(Collectors.toList());
+		System.out.println("=========================");
 		
-		System.out.println(listAlunos);
-		
+		System.out.println("Todos alunos cadastrados:");
+		System.out.println(repository.buscarTodos());
 		
 	}
 
