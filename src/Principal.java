@@ -14,6 +14,15 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
+		
+		//CRIAR UMA ESTRUTURA COM MAP PARA SIMULAR UM BANCO DE DADOS
+		//CRIE UMA CLASSE CARRO E UMA CLASSE CARROREPOSITORY
+		
+		// O CARRO DEVE CONTER PLACA, COR, MARCA E MODELO
+		
+		//AO TENTAR INSERIR UM CARRO COM A MESMA PLACA, DEVERÁ AVISAR QUE NÃO CONSEGUIU POIS JÁ EXISTE
+		//E NÃO ATUALIZAR O CARRO
+		
 		Scanner sc = new Scanner(System.in);
 		boolean continua = true;
 		
