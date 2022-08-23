@@ -53,6 +53,7 @@ public class Principal {
 		System.out.println("Todos alunos cadastrados:");
 		System.out.println(repository.buscarTodos());
 		
+		sc.close();
 	}
 
 }
